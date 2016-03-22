@@ -35,6 +35,7 @@ app.tag('user', function *() {
 
 });
 
+// execute as middleware for any endpoint with the user tag
 app.tags({
   user: function *() {
 
