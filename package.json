@@ -1,0 +1,24 @@
+{
+  "name": "fleek",
+  "version": "1.0.0",
+  "description": "Unifying library for the fleek framework",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fleekjs/fleek.git"
+  },
+  "keywords": [
+    "fleek",
+    "koa",
+    "swagger"
+  ],
+  "author": "John Hofrichter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fleekjs/fleek/issues"
+  },
+  "homepage": "https://github.com/fleekjs/fleek#readme"
+}
