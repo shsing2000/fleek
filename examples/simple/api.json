@@ -1,0 +1,331 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Foo",
+    "description": "Foo on Fleek",
+    "version": "1.0.0"
+  },
+  "host": "localhost:4000",
+  "schemes": ["http", "https"],
+  "basePath": "/v1",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/foo": {
+      "post": {
+        "description": "Create foo",
+        "tags": ["foo"],
+        "responses": {
+          "200": {
+            "schema": {
+              "allOf": [{
+                "$ref": "#/definitions/200"
+              }, {
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      },
+                      "resources": {
+                        "type": "string"
+                      },
+                      "services": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }]
+            }
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/500"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "ID",
+          "in": "body",
+          "description": "ID of the foo",
+          "type": "string"
+        }]
+      },
+      "get": {
+        "description": "Get foo",
+        "tags": ["foo"],
+        "responses": {
+          "200": {
+            "schema": {
+              "allOf": [{
+                "$ref": "#/definitions/200"
+              }, {
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      },
+                      "resources": {
+                        "type": "string"
+                      },
+                      "services": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }]
+            }
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/500"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update foo",
+        "tags": ["foo"],
+        "responses": {
+          "200": {
+            "schema": {
+              "allOf": [{
+                "$ref": "#/definitions/200"
+              }, {
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      },
+                      "resources": {
+                        "type": "string"
+                      },
+                      "services": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }]
+            }
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/500"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "ID",
+          "in": "body",
+          "description": "ID of the foo",
+          "type": "string"
+        }]
+      },
+      "delete": {
+        "description": "Delete foo",
+        "tags": ["foo"],
+        "responses": {
+          "200": {
+            "schema": {
+              "allOf": [{
+                "$ref": "#/definitions/200"
+              }, {
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      },
+                      "resources": {
+                        "type": "string"
+                      },
+                      "services": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }]
+            }
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/500"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "ID",
+          "in": "body",
+          "description": "ID of the foo",
+          "type": "string"
+        }]
+      }
+    },
+    "/foo/:id": {
+      "post": {
+        "description": "Create foo",
+        "tags": ["foo"],
+        "responses": {
+          "200": {
+            "schema": {
+              "allOf": [{
+                "$ref": "#/definitions/200"
+              }, {
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      },
+                      "resources": {
+                        "type": "string"
+                      },
+                      "services": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }]
+            }
+          },
+          "500": {
+            "schema": {
+              "$ref": "#/definitions/500"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "ID",
+          "in": "body",
+          "description": "ID of the foo",
+          "type": "string"
+        }]
+      }
+    }
+  },
+  "definitions": {
+    "BaseResponse": {
+      "type": "object",
+      "required": [
+        "data",
+        "status",
+        "success"
+      ],
+      "properties": {
+        "success": {
+
+          "type": "boolean",
+          "default": false
+        },
+        "data": {
+          "type": "object"
+        },
+        "status": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 600
+        }
+      }
+    },
+    "200": {
+      "allOf": [{
+        "$ref": "#/definitions/BaseResponse"
+      }, {
+        "properties": {
+          "success": {
+            "default": true
+          },
+          "data": {},
+          "status": {
+            "default": 200
+          }
+        }
+      }]
+    },
+    "201": {
+      "allOf": [{
+        "$ref": "#/definitions/BaseResponse"
+      }, {
+        "properties": {
+          "success": {
+            "default": true
+          },
+          "data": {
+            "default": "Created"
+          },
+          "status": {
+            "default": 201
+          }
+        }
+      }]
+    },
+    "400": {
+      "allOf": [{
+        "$ref": "#/definitions/BaseResponse"
+      }, {
+        "properties": {
+          "data": {
+            "default": "Bad Request"
+          },
+          "status": {
+            "default": 400
+          }
+        }
+      }]
+    },
+    "401": {
+      "allOf": [{
+        "$ref": "#/definitions/BaseResponse"
+      }, {
+        "properties": {
+          "data": {
+            "default": "Unauthorized"
+          },
+          "status": {
+            "default": 401
+          }
+        }
+      }]
+    },
+    "404": {
+      "allOf": [{
+        "$ref": "#/definitions/BaseResponse"
+      }, {
+        "properties": {
+          "data": {
+            "default": "Not Found"
+          },
+          "status": {
+            "default": 404
+          }
+        }
+      }]
+    },
+    "500": {
+      "allOf": [{
+        "$ref": "#/definitions/BaseResponse"
+      }, {
+        "properties": {
+          "data": {
+            "default": "Internal Server Error"
+          },
+          "status": {
+            "default": 500
+          }
+        }
+      }]
+    }
+  }
+}
