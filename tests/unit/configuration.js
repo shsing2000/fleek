@@ -7,11 +7,11 @@ let fleek = require('../../lib/fleek');
 
 const SWAG = {
   PATH: {
-    VALID: __dirname + '/../config/swagger.json',
+    VALID: __dirname + '/../unit/config/swagger.json',
     INVALID: './foobar'
   },
   OBJECT: {
-    VALID: true || require('../config/swagger.json'),
+    VALID: require('./config/swagger.json'),
     INVALID: {}
   },
 };
@@ -36,14 +36,14 @@ describe('Configuration and setup', () => {
         assert.throws(() => fleek(SWAG.PATH.INVALID), 'Failed to resolve swagger');
       });
     });
-    return;
+
     describe ('Object', () => {
       it('should accepts a raw swagger object', function *() {
         let app = fleek(SWAG.OBJECT.VALID);
       });
 
       it('should error out if the object is invalid', function *() {
-        assert.throws(() => fleek(SWAG.OBJECT.INVALID), 'throws an invalid object error');
+        assert.throws(() => fleek(SWAG.OBJECT.INVALID), 'Swagger source must be');
       });
     });
   });
