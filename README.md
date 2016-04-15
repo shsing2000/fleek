@@ -20,7 +20,7 @@ let app = fleek('./config/swagger.json'); // implicitly add an app.use middlewar
 // let app = fleek(); // Attempts to find swagger docs on its own
 // let app = fleek({ source: './config/swagger.json' }); // additional options
 
-app.use(sockets()); // binds validation logic
+app.use(sockets()); // binds socket logic
 
 app.use(validator()); // binds validation logic
 
