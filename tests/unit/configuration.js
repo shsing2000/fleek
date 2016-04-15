@@ -5,6 +5,7 @@ let coMocha = require('co-mocha');
 let assert = require('chai').assert;
 let fleek = require('../../lib/fleek');
 
+const DRIVERS = require('../../lib/drivers');
 const SWAG = {
   PATH: {
     VALID: __dirname + '/../unit/config/swagger.json',
@@ -21,7 +22,6 @@ describe('Configuration and setup', () => {
   describe('Swagger loading', () => {
 
     describe ('Path', () => {
-
       it('should look for swagger if no parameter is sent', function *() {
         process.chdir('tests/unit');
         let app = fleek();
@@ -45,6 +45,33 @@ describe('Configuration and setup', () => {
       it('should error out if the object is invalid', function *() {
         assert.throws(() => fleek(SWAG.OBJECT.INVALID), 'Swagger source must be');
       });
+    });
+  });
+
+
+  describe('Driver selection', () => {
+
+    it('should default to the koa driver', function *() {
+      let app = fleek(SWAG.OBJECT.VALID);
+      assert.instanceOf(app.driver, DRIVERS.internal.koa);
+    });
+
+    it('should allow specification of another supported driver', function *() {
+      let app = fleek({ source: SWAG.OBJECT.VALID, driver: 'koa' });
+      assert.instanceOf(app.driver, DRIVERS.internal.koa);
+      //  TODO: implement another driver to make this useful
+    });
+
+    it('should error out for unsuported driver', function *() {
+      assert.throws(() => fleek({ source: SWAG.OBJECT.INVALID, driver: 'FAIL' }), '');
+    });
+
+    it('should allow allow custom driver injection', function *() {
+
+    });
+
+    it('should error out for custom driver that does not extend BaseDriver', function *() {
+      assert.throws(() => fleek({ source: SWAG.OBJECT.INVALID, driver: {} }), '');
     });
   });
 });
