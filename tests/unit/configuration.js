@@ -67,11 +67,12 @@ describe('Configuration and setup', () => {
     });
 
     it('should allow allow custom driver injection', function *() {
-
+      class FooDriver extends DRIVERS.base {}
+      assert.throws(() => fleek({ source: SWAG.OBJECT.VALID, driver: (new Foodriver) }), '');
     });
 
     it('should error out for custom driver that does not extend BaseDriver', function *() {
-      assert.throws(() => fleek({ source: SWAG.OBJECT.INVALID, driver: {} }), '');
+      assert.throws(() => fleek({ source: SWAG.OBJECT.VALID, driver: {} }), 'class extending BaseDriver');
     });
   });
 });
