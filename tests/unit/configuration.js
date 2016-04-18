@@ -17,7 +17,7 @@ const SWAG = {
   },
 };
 
-describe('Configuration and setup', () => {
+describe('Configuration', () => {
 
   describe('Swagger loading', () => {
 

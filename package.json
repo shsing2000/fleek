@@ -27,7 +27,8 @@
     "express": "^4.13.4",
     "fleek-parser": "^1.2.0",
     "koa": "^1.2.0",
-    "lodash": "^4.11.1"
+    "lodash": "^4.11.1",
+    "routington": "^1.0.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",
