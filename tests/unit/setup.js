@@ -16,7 +16,7 @@ describe('Setup', () => {
       app.use(function * () {});
     });
 
-    it('should reject non-genertor value', function *() {
+    it('should reject non-generator value', function *() {
       let app = fleek(SWAG_PATH);
       assert.throws(() => app.use(), 'Generator expected');
       assert.throws(() => app.use({}), 'Generator expected');
