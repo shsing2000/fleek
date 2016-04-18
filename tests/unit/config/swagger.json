@@ -128,47 +128,6 @@
           "description": "ID of the foo",
           "type": "string"
         }]
-      },
-      "delete": {
-        "description": "Delete foo",
-        "tags": ["foo"],
-        "responses": {
-          "200": {
-            "schema": {
-              "allOf": [{
-                "$ref": "#/definitions/200"
-              }, {
-                "properties": {
-                  "data": {
-                    "type": "object",
-                    "properties": {
-                      "status": {
-                        "type": "string"
-                      },
-                      "resources": {
-                        "type": "string"
-                      },
-                      "services": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }]
-            }
-          },
-          "500": {
-            "schema": {
-              "$ref": "#/definitions/500"
-            }
-          }
-        },
-        "parameters": [{
-          "name": "ID",
-          "in": "body",
-          "description": "ID of the foo",
-          "type": "string"
-        }]
       }
     },
     "/foo/{id}": {
@@ -212,9 +171,91 @@
           "description": "ID of the foo",
           "type": "string"
         }]
-      }
+      },
+    "get": {
+      "description": "View foo",
+      "tags": ["foo"],
+      "responses": {
+        "200": {
+          "schema": {
+            "allOf": [{
+              "$ref": "#/definitions/200"
+            }, {
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "resources": {
+                      "type": "string"
+                    },
+                    "services": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }]
+          }
+        },
+        "500": {
+          "schema": {
+            "$ref": "#/definitions/500"
+          }
+        }
+      },
+      "parameters": [{
+        "name": "ID",
+        "in": "body",
+        "description": "ID of the foo",
+        "type": "string"
+      }]
+    },
+    "delete": {
+      "description": "Delete foo",
+      "tags": ["foo"],
+      "responses": {
+        "200": {
+          "schema": {
+            "allOf": [{
+              "$ref": "#/definitions/200"
+            }, {
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "resources": {
+                      "type": "string"
+                    },
+                    "services": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }]
+          }
+        },
+        "500": {
+          "schema": {
+            "$ref": "#/definitions/500"
+          }
+        }
+      },
+      "parameters": [{
+        "name": "ID",
+        "in": "body",
+        "description": "ID of the foo",
+        "type": "string"
+      }]
     }
-  },
+  }
+},
   "definitions": {
     "BaseResponse": {
       "type": "object",
